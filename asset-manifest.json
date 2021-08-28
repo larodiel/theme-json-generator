@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/theme-json-generator/static/js/main.adc0fd80.chunk.js",
-    "main.js.map": "/theme-json-generator/static/js/main.adc0fd80.chunk.js.map",
+    "main.js": "/theme-json-generator/static/js/main.272cc5ba.chunk.js",
+    "main.js.map": "/theme-json-generator/static/js/main.272cc5ba.chunk.js.map",
     "react-syntax-highlighter_languages_highlight_abnf.js": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_abnf.cf04b163.chunk.js",
     "react-syntax-highlighter_languages_highlight_abnf.js.map": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_abnf.cf04b163.chunk.js.map",
     "react-syntax-highlighter_languages_highlight_accesslog.js": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_accesslog.59c86500.chunk.js",
@@ -394,6 +394,6 @@
   "entrypoints": [
     "static/js/runtime-main.4a99be52.js",
     "static/js/186.3fcf55cc.chunk.js",
-    "static/js/main.adc0fd80.chunk.js"
+    "static/js/main.272cc5ba.chunk.js"
   ]
 }
