@@ -1,3 +1,5 @@
+import './scss/main.scss'
+
 import React, { Component } from 'react'
 import reactDom from "react-dom";
 import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -5,9 +7,11 @@ import {a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import ColorList from './components/color-list';
 import FontList from './components/FontList';
 import HeadingStyle from './components/HeadingStyle';
+import HeaderNav from './components/HeaderNavigation';
 import './libs/to-slug'
 import themejsonDEMO from './theme';
 import * as CONST from './Constants';
+
 export default class ThemeFile extends Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +38,7 @@ export default class ThemeFile extends Component {
       themeJson: themeJson
     }
     setTimeout(() => {
-      this.autoSave();
+      //this.autoSave();
     }, 1000);
 	}
 
@@ -77,10 +81,12 @@ export default class ThemeFile extends Component {
     const headingItems = [1, 2, 3, 4, 5, 6];
 		return (
       <div>
-        <div className="row" style={{minHeight:'calc(100vh - 120px)'}}>
+        <HeaderNav />
+        <div className="container">
+          <div className="row pt-2" style={{minHeight:'calc(100vh - 120px)'}}>
           <div className="col-12 col-md-4">
-            <div id="theme-colors">
-              <h2 className="display-6 mb-4">Palette Colors</h2>
+            <div id="colors-palette">
+              <h2 className="display-6 mb-4">Colors Pallete</h2>
               <ColorList initalColors={this.state.colors} onChange={ colors => {
                 let newColors = [...this.state.colors];
                 let newPalette = {...this.state.themeJson};
@@ -142,7 +148,7 @@ export default class ThemeFile extends Component {
             </>
           </div>
         </div>
-        <div className="json-file">
+          <div className="json-file" id="jsonfile">
           <hr className="mt-5" />
           <h2 className="display-6">theme.json</h2>
           <div style={{maxHeight:500, overflow: 'auto'}}>
@@ -151,9 +157,12 @@ export default class ThemeFile extends Component {
             </SyntaxHighlighter>
           </div>
         </div>
-        <div className="d-grid gap-2 mt-5 mb-3" style={{gridTemplateColumns : '1fr 1fr'}}>
-          <button className="btn btn-primary" type="button" onClick={()=>{ this.saveForm() }}>Save</button>
-          <button className="btn btn-primary" type="button" onClick={() => {this.deleteItems()}}>Clear Fields</button>
+          <div className="btn-floating d-grid gap-2 mt-5 mb-3" style={{gridTemplateColumns : '1fr'}}>
+          <div className="btn-group" role="group" aria-label="Action buttons">
+            <button className="btn btn-primary" type="button" onClick={()=>{ this.saveForm() }}><i className="bi bi-save"></i> Save</button>
+            <button className="btn btn-outline-danger" type="button" onClick={() => {this.deleteItems()}}><i className="bi bi-trash2"></i> Clear Fields</button>
+          </div>
+        </div>
         </div>
 			</div>
 		);

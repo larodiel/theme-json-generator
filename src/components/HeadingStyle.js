@@ -11,10 +11,10 @@ export default class HeadingsStyles extends Component {
       return false;
     }
 
+    this.state = {};
+
     const initialSize   = props.initialSize || 40;
     const initialFamily = props.initialFamily || "Roboto";
-
-    this.state = {};
 
     this.state[props.heading] = {
       "unit": 'px',
