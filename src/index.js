@@ -4,25 +4,17 @@ import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import ColorList from './components/color-list';
 import FontList from './components/FontList';
+import HeadingStyle from './components/HeadingStyle';
 import './libs/to-slug'
-
-export default class ExampleComponent extends Component {
+import themejsonDEMO from './theme';
+import * as CONST from './Constants';
+export default class ThemeFile extends Component {
 	constructor(props) {
 		super(props);
 
     let colors = [];
-    let themeJson = {
-      "version": 1,
-      "settings" : {
-        "colors" : {
-          "palette": []
-        },
-        "typography": {
-          "fontFamilies": [],
-          "fontSizes": []
-        }
-      }
-    }
+    let themeJson = themejsonDEMO;
+    themeJson.settings.spacing.units = CONST.UNITS;
 
     const savedItems = {
       colors: localStorage.getItem('colors'),
@@ -60,18 +52,7 @@ export default class ExampleComponent extends Component {
     if(window.confirm('Do you really want to delete ALL ITEMS?')) {
       this.setState({
         colors: [],
-        themeJson: {
-          "version": 1,
-          "settings" : {
-            "colors" : {
-              "palette": []
-            },
-            "typography": {
-              "fontFamilies": [],
-              "fontSizes": []
-            }
-          }
-        }
+        themeJson: themejsonDEMO
       });
       localStorage.clear();
     }
@@ -83,19 +64,28 @@ export default class ExampleComponent extends Component {
     }, 1000 * 30);
   }
 
+  headingChangeHandler(heading) {
+    const stateCopy = {...this.state.themeJson};
+    stateCopy.styles.elements = {...stateCopy.styles.elements, ...heading}
+    this.setState({
+      themeJson: stateCopy
+    })
+  }
+
 	render() {
-    let fonts = this.state.themeJson.settings.typography.fontFamilies
+    const fonts = this.state.themeJson.settings.typography.fontFamilies
+    const headingItems = [1, 2, 3, 4, 5, 6];
 		return (
       <div>
         <div className="row" style={{minHeight:'calc(100vh - 120px)'}}>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-4">
             <div id="theme-colors">
               <h2 className="display-6 mb-4">Palette Colors</h2>
               <ColorList initalColors={this.state.colors} onChange={ colors => {
                 let newColors = [...this.state.colors];
                 let newPalette = {...this.state.themeJson};
                 newColors = colors
-                newPalette.settings.colors.palette = colors
+                newPalette.settings.color.palette = colors
 
                 this.setState({
                   colors: newColors,
@@ -115,14 +105,50 @@ export default class ExampleComponent extends Component {
                 })
               }} />
             </div>
+            <hr />
+            <div id="theme-headings">
+              <HeadingStyle heading="h1" initialSize="40" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+              <HeadingStyle heading="h2" initialSize="30" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+              <HeadingStyle heading="h3" initialSize="28" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+              <HeadingStyle heading="h4" initialSize="24" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+              <HeadingStyle heading="h5" initialSize="20" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+              <HeadingStyle heading="h6" initialSize="15" onChange={heading => {
+                this.headingChangeHandler(heading)
+              }} />
+            </div>
           </div>
-          <div className="col-12 col-md-6">
-            <h2 className="display-6">theme.json</h2>
+          <div className="col-12 col-md-8">
             <>
-              <SyntaxHighlighter language="json" style={a11yDark}>
-                {JSON.stringify(this.state.themeJson, null,'\t')}
-              </SyntaxHighlighter>
+              <p className="h3">Preview</p>
+              {headingItems.map((field, idx) => {
+                return (
+                  <div className="heading-item" key={`heading-${idx}`}>
+                    <p className="lead">H{field}</p>
+                    <p className={`h${field}`} style={this.state.themeJson.styles.elements[`h${field}`].typography}>Heading {field}</p>
+                    <hr />
+                  </div>
+                )
+              })}
             </>
+          </div>
+        </div>
+        <div className="json-file">
+          <hr className="mt-5" />
+          <h2 className="display-6">theme.json</h2>
+          <div style={{maxHeight:500, overflow: 'auto'}}>
+            <SyntaxHighlighter language="json" style={a11yDark}>
+              {JSON.stringify(this.state.themeJson, null,'\t')}
+            </SyntaxHighlighter>
           </div>
         </div>
         <div className="d-grid gap-2 mt-5 mb-3" style={{gridTemplateColumns : '1fr 1fr'}}>
@@ -135,6 +161,6 @@ export default class ExampleComponent extends Component {
 }
 
 reactDom.render(
-  <ExampleComponent blabal="asdsad" />,
+  <ThemeFile />,
   document.getElementById('root')
 );

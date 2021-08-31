@@ -35,7 +35,7 @@ export default class ColorList extends Component {
     colorsAux[idx] = {
       color: color,
       name: colorName,
-      slug: colorName.to_slug()
+      slug: String(colorName).to_slug()
     }
 
     this.setState({
