@@ -1,2 +1,0 @@
-(this["webpackJsonptheme-json-generator"]=this["webpackJsonptheme-json-generator"]||[]).push([[54],{126:function(e,n){e.exports=function(e){return{name:"ERB",subLanguage:"xml",contains:[e.COMMENT("<%#","%>"),{begin:"<%[%=-]?",end:"[%-]?%>",subLanguage:"ruby",excludeBegin:!0,excludeEnd:!0}]}}}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_highlight_erb.b66b8c46.chunk.js.map

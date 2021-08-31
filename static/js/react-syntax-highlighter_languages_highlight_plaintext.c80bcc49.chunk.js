@@ -1,2 +1,0 @@
-(this["webpackJsonptheme-json-generator"]=this["webpackJsonptheme-json-generator"]||[]).push([[126],{202:function(e,t){e.exports=function(e){return{name:"Plain text",aliases:["text","txt"],disableAutodetect:!0}}}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_highlight_plaintext.c80bcc49.chunk.js.map

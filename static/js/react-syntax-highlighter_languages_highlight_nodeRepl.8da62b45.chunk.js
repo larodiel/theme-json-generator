@@ -1,2 +1,0 @@
-(this["webpackJsonptheme-json-generator"]=this["webpackJsonptheme-json-generator"]||[]).push([[114],{190:function(e,n){e.exports=function(e){return{name:"Node REPL",contains:[{className:"meta",starts:{end:/ |$/,starts:{end:"$",subLanguage:"javascript"}},variants:[{begin:/^>(?=[ ]|$)/},{begin:/^\.\.\.(?=[ ]|$)/}]}]}}}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_highlight_nodeRepl.8da62b45.chunk.js.map

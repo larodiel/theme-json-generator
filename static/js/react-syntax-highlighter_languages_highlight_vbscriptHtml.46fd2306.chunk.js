@@ -1,0 +1,2 @@
+(this["webpackJsonptheme-json-generator"]=this["webpackJsonptheme-json-generator"]||[]).push([[175],{253:function(n,e){n.exports=function(n){return{name:"VBScript in HTML",subLanguage:"xml",contains:[{begin:"<%",end:"%>",subLanguage:"vbscript"}]}}}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_highlight_vbscriptHtml.46fd2306.chunk.js.map
