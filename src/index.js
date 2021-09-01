@@ -11,6 +11,7 @@ import HeadingStyle from './components/HeadingStyle';
 import HeaderNav from './components/HeaderNavigation';
 import AccordionItem from './components/Accordion';
 import './libs/to-slug'
+import share from './libs/share'
 import themejsonDEMO from './theme';
 import * as CONST from './Constants';
 
@@ -162,11 +163,24 @@ export default class ThemeFile extends Component {
           </div>
         </div>
           <div className="btn-floating d-grid gap-2 mt-5 mb-3" style={{gridTemplateColumns : '1fr'}}>
-          <div className="btn-group" role="group" aria-label="Action buttons">
-            <button className="btn btn-primary" type="button" onClick={()=>{ this.saveForm() }}><i className="bi bi-save"></i> Save</button>
-            <button className="btn btn-outline-danger" type="button" onClick={() => {this.deleteItems()}}><i className="bi bi-trash2"></i> Clear Fields</button>
+            <div className="btn-group" role="group" aria-label="Action buttons">
+              <button className="btn btn-primary" type="button" onClick={()=>{ this.saveForm() }}><i className="bi bi-save"></i> Save</button>
+              <button className="btn btn-danger" type="button" onClick={() => {this.deleteItems()}}><i className="bi bi-trash2"></i> Clear Fields</button>
+              <button className="btn btn-primary" type="button" onClick={(event) => {
+                if (navigator.share) {
+                  navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                  }).then(() => {
+                    window.alert('Thanks for sharing!');
+                  })
+                  .catch(console.error);
+                } else {
+                  share('twitter')
+                }
+              }}><i className="bi bi-share"></i> Share</button>
+            </div>
           </div>
-        </div>
         </div>
 			</div>
 		);
