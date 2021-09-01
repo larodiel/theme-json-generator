@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/theme-json-generator/static/css/main.b482b6f8.chunk.css",
-    "main.js": "/theme-json-generator/static/js/main.4e6fc60a.chunk.js",
-    "main.js.map": "/theme-json-generator/static/js/main.4e6fc60a.chunk.js.map",
+    "main.css": "/theme-json-generator/static/css/main.b1c611a2.chunk.css",
+    "main.js": "/theme-json-generator/static/js/main.8abd5b42.chunk.js",
+    "main.js.map": "/theme-json-generator/static/js/main.8abd5b42.chunk.js.map",
     "react-syntax-highlighter_languages_highlight_abnf.js": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_abnf.6be2d80b.chunk.js",
     "react-syntax-highlighter_languages_highlight_abnf.js.map": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_abnf.6be2d80b.chunk.js.map",
     "react-syntax-highlighter_languages_highlight_accesslog.js": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_accesslog.f260f242.chunk.js",
@@ -373,8 +373,8 @@
     "react-syntax-highlighter_languages_highlight_zephir.js.map": "/theme-json-generator/static/js/react-syntax-highlighter_languages_highlight_zephir.8895d923.chunk.js.map",
     "runtime-main.js": "/theme-json-generator/static/js/runtime-main.5c543dc1.js",
     "runtime-main.js.map": "/theme-json-generator/static/js/runtime-main.5c543dc1.js.map",
-    "static/js/186.61ec1758.chunk.js": "/theme-json-generator/static/js/186.61ec1758.chunk.js",
-    "static/js/186.61ec1758.chunk.js.map": "/theme-json-generator/static/js/186.61ec1758.chunk.js.map",
+    "static/js/186.87f42bc9.chunk.js": "/theme-json-generator/static/js/186.87f42bc9.chunk.js",
+    "static/js/186.87f42bc9.chunk.js.map": "/theme-json-generator/static/js/186.87f42bc9.chunk.js.map",
     "static/js/187.fb17f3db.chunk.js": "/theme-json-generator/static/js/187.fb17f3db.chunk.js",
     "static/js/187.fb17f3db.chunk.js.map": "/theme-json-generator/static/js/187.fb17f3db.chunk.js.map",
     "static/js/188.8a34603c.chunk.js": "/theme-json-generator/static/js/188.8a34603c.chunk.js",
@@ -390,13 +390,13 @@
     "static/js/193.cafafc98.chunk.js": "/theme-json-generator/static/js/193.cafafc98.chunk.js",
     "static/js/193.cafafc98.chunk.js.map": "/theme-json-generator/static/js/193.cafafc98.chunk.js.map",
     "index.html": "/theme-json-generator/index.html",
-    "static/css/main.b482b6f8.chunk.css.map": "/theme-json-generator/static/css/main.b482b6f8.chunk.css.map",
-    "static/js/186.61ec1758.chunk.js.LICENSE.txt": "/theme-json-generator/static/js/186.61ec1758.chunk.js.LICENSE.txt"
+    "static/css/main.b1c611a2.chunk.css.map": "/theme-json-generator/static/css/main.b1c611a2.chunk.css.map",
+    "static/js/186.87f42bc9.chunk.js.LICENSE.txt": "/theme-json-generator/static/js/186.87f42bc9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5c543dc1.js",
-    "static/js/186.61ec1758.chunk.js",
-    "static/css/main.b482b6f8.chunk.css",
-    "static/js/main.4e6fc60a.chunk.js"
+    "static/js/186.87f42bc9.chunk.js",
+    "static/css/main.b1c611a2.chunk.css",
+    "static/js/main.8abd5b42.chunk.js"
   ]
 }
