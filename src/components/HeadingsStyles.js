@@ -133,7 +133,6 @@ export default class HeadingsStyles extends Component {
                     }} />
 
                     <select className="form-select" aria-label="Heading size" value={state_heading.unit} onChange={event => {
-                      console.log(event.target.value)
                       let newValues = {};
                       newValues[`h${headingIdx}`] = {
                         ...state_heading,

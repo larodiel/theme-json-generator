@@ -43,7 +43,6 @@ export default class HeadingsStyles extends Component {
 
   callback(element) {
     if(typeof this.props.onChange === 'function') {
-      //element['heading'] = this.props.heading;
       this.props.onChange(element);
     }
   }
@@ -55,7 +54,7 @@ export default class HeadingsStyles extends Component {
       <>
         <div className="heading-settings">
           <fieldset className="mb-4 mt-2">
-            <p className={`${heading} apply-font-heading${heading}`} style={state_heading.typography}>Heading {heading}</p>
+            <p className={`${heading} apply-font-heading${heading}`}>{heading.toUpperCase()}</p>
             <div className="input-group">
               <FontPicker
                 className='input-control form-select'
@@ -67,6 +66,7 @@ export default class HeadingsStyles extends Component {
                   newValues[heading] = {
                     typography: {...state_heading.typography, ...{fontFamily: fontFamily.family}}
                   }
+                  state_heading.typography.fontFamily = fontFamily.family;
                   this.callback(newValues)
                 }}
               />

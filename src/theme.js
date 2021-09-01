@@ -13,7 +13,33 @@ export default {
     },
     "typography": {
       "customLineHeight": true,
-      "fontSizes": [],
+      "fontSizes": [
+        {
+          "name": "Extra Small",
+          "size": "9px",
+          "slug": "x-small"
+        },
+        {
+          "name": "Small",
+          "size": "10px",
+          "slug": "small"
+        },
+        {
+          "name": "Normal",
+          "size": "12px",
+          "slug": "normal"
+        },
+        {
+          "name": "Medium",
+          "size": "16px",
+          "slug": "medium"
+        },
+        {
+          "name": "Big",
+          "size": "20px",
+          "slug": "big"
+        }
+      ],
       "fontFamilies": []
     },
     "spacing": {
@@ -117,12 +143,6 @@ export default {
           "fontSize": "16px",
           "lineHeight": "1.2",
           "fontWeight": "500"
-        }
-      },
-      "li": {
-        "typography": {
-          "fontSize": "120px",
-          "lineHeight": "var(--wp--custom--line-height--heading)"
         }
       }
     },

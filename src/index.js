@@ -6,8 +6,10 @@ import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import ColorList from './components/color-list';
 import FontList from './components/FontList';
+import FontSizes from './components/FontSizes';
 import HeadingStyle from './components/HeadingStyle';
 import HeaderNav from './components/HeaderNavigation';
+import AccordionItem from './components/Accordion';
 import './libs/to-slug'
 import themejsonDEMO from './theme';
 import * as CONST from './Constants';
@@ -16,17 +18,11 @@ export default class ThemeFile extends Component {
 	constructor(props) {
 		super(props);
 
-    let colors = [];
     let themeJson = themejsonDEMO;
     themeJson.settings.spacing.units = CONST.UNITS;
 
     const savedItems = {
-      colors: localStorage.getItem('colors'),
       themeJson: localStorage.getItem('themeJson')
-    }
-
-    if(savedItems.colors) {
-      colors = JSON.parse(savedItems.colors)
     }
 
     if(savedItems.themeJson) {
@@ -34,17 +30,12 @@ export default class ThemeFile extends Component {
     }
 
     this.state = {
-      colors: colors,
       themeJson: themeJson
     }
-    setTimeout(() => {
-      //this.autoSave();
-    }, 1000);
 	}
 
   saveForm() {
     try {
-      localStorage.setItem('colors', JSON.stringify(this.state.colors));
       localStorage.setItem('themeJson', JSON.stringify(this.state.themeJson));
       window.alert('Form has been saved')
     } catch(err) {
@@ -55,7 +46,6 @@ export default class ThemeFile extends Component {
   deleteItems() {
     if(window.confirm('Do you really want to delete ALL ITEMS?')) {
       this.setState({
-        colors: [],
         themeJson: themejsonDEMO
       });
       localStorage.clear();
@@ -64,13 +54,14 @@ export default class ThemeFile extends Component {
 
   autoSave() {
     setInterval(() => {
-      localStorage.setItem('colors', JSON.stringify(this.state.colors));
+      localStorage.setItem('themeJson', JSON.stringify(this.state.themeJson));
     }, 1000 * 30);
   }
 
   headingChangeHandler(heading) {
     const stateCopy = {...this.state.themeJson};
     stateCopy.styles.elements = {...stateCopy.styles.elements, ...heading}
+
     this.setState({
       themeJson: stateCopy
     })
@@ -79,75 +70,88 @@ export default class ThemeFile extends Component {
 	render() {
     const fonts = this.state.themeJson.settings.typography.fontFamilies
     const headingItems = [1, 2, 3, 4, 5, 6];
+    const themeSettings = this.state.themeJson.settings;
 		return (
       <div>
         <HeaderNav />
         <div className="container">
-          <div className="row pt-2" style={{minHeight:'calc(100vh - 120px)'}}>
-          <div className="col-12 col-md-4">
-            <div id="colors-palette">
-              <h2 className="display-6 mb-4">Colors Pallete</h2>
-              <ColorList initalColors={this.state.colors} onChange={ colors => {
-                let newColors = [...this.state.colors];
-                let newPalette = {...this.state.themeJson};
-                newColors = colors
-                newPalette.settings.color.palette = colors
 
-                this.setState({
-                  colors: newColors,
-                  themeJson: newPalette
-                })
-              }} />
-            </div>
-            <hr className='mt-5 mb-4' />
-            <div id="theme-fonts">
-              <h2 className="display-6 mb-4">Theme Fonts</h2>
-              <FontList initialFonts={fonts} onChange={(fonts)=>{
-                let newFonts = {...this.state.themeJson};
-                newFonts.settings.typography.fontFamilies = fonts;
+          <div className="row pt-2" style={{minHeight:'100vh'}}>
+            <div className="col-12 col-md-4">
+              <div className="accordion">
+                <AccordionItem headerID="paletteHeading" panelID="colorsPalette" title="Colors Pallete">
+                  <div id="colors-palette">
+                    <ColorList initalColors={themeSettings.color.palette} onChange={ colors => {
+                      let newPalette = {...this.state.themeJson};
+                      newPalette.settings.color.palette = colors
 
-                this.setState({
-                  themeJson: newFonts
-                })
-              }} />
-            </div>
-            <hr />
-            <div id="theme-headings">
-              <HeadingStyle heading="h1" initialSize="40" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-              <HeadingStyle heading="h2" initialSize="30" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-              <HeadingStyle heading="h3" initialSize="28" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-              <HeadingStyle heading="h4" initialSize="24" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-              <HeadingStyle heading="h5" initialSize="20" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-              <HeadingStyle heading="h6" initialSize="15" onChange={heading => {
-                this.headingChangeHandler(heading)
-              }} />
-            </div>
-          </div>
-          <div className="col-12 col-md-8">
-            <>
-              <p className="h3">Preview</p>
-              {headingItems.map((field, idx) => {
-                return (
-                  <div className="heading-item" key={`heading-${idx}`}>
-                    <p className="lead">H{field}</p>
-                    <p className={`h${field}`} style={this.state.themeJson.styles.elements[`h${field}`].typography}>Heading {field}</p>
-                    <hr />
+                      this.setState({
+                        themeJson: newPalette
+                      })
+                    }} />
                   </div>
-                )
-              })}
-            </>
+                </AccordionItem>
+                <AccordionItem headerID="FontsHeading" panelID="ThemeFonts" title="Theme Fonts">
+                  <div id="theme-fonts">
+                    <FontList initialFonts={fonts} onChange={(fonts)=>{
+                      let newFonts = {...this.state.themeJson};
+                      newFonts.settings.typography.fontFamilies = fonts;
+
+                      this.setState({
+                        themeJson: newFonts
+                      })
+                    }} />
+                  </div>
+                </AccordionItem>
+                <AccordionItem headerID="HeadingsHeader" panelID="Headings" title="Headings">
+                  <div id="theme-headings">
+                    <HeadingStyle heading="h1" initialSize="40" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                    <HeadingStyle heading="h2" initialSize="30" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                    <HeadingStyle heading="h3" initialSize="28" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                    <HeadingStyle heading="h4" initialSize="24" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                    <HeadingStyle heading="h5" initialSize="20" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                    <HeadingStyle heading="h6" initialSize="15" onChange={heading => {
+                      this.headingChangeHandler(heading)
+                    }} />
+                  </div>
+                </AccordionItem>
+                <AccordionItem headerID="fontsSizesHeader" panelID="fontsSizes" title="Font Sizes">
+                  <FontSizes onChange={sizes => {
+                    const stateCopy = {...this.state.themeJson};
+                    stateCopy.settings.typography.fontSizes = sizes
+
+                    this.setState({
+                      themeJson: stateCopy
+                    })
+                  }} />
+                </AccordionItem>
+              </div>
+            </div>
+            <div className="col-12 col-md-8">
+              <>
+                <p className="h3">Preview</p>
+                {headingItems.map((field, idx) => {
+                  return (
+                    <div className="heading-item" key={`heading-${idx}`}>
+                      <p className="lead">H{field}</p>
+                      <p className={`h${field}`} style={this.state.themeJson.styles.elements[`h${field}`].typography}>Heading {field}</p>
+                      <hr />
+                    </div>
+                  )
+                })}
+              </>
+            </div>
           </div>
-        </div>
           <div className="json-file" id="jsonfile">
           <hr className="mt-5" />
           <h2 className="display-6">theme.json</h2>
