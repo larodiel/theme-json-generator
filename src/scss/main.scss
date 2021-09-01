@@ -1,0 +1,50 @@
+@import './global/variables';
+@import './global/css-variables';
+
+body {
+  background-color: var(--body--bg);
+  color: var(--body--color);
+  padding-bottom: 60px;
+}
+
+.btn {
+  &-floating{
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+  }
+}
+
+body div[id^=font-picker] {
+  box-shadow: none;
+  border: 1px solid #ced4da;
+
+  .dropdown-button {
+    background-color: transparent;
+  }
+
+  .dropdown-button:hover,
+  .dropdown-button:focus,
+  ul {
+    background-color: var(--body--bg);
+    color: var(--body--color);
+  }
+
+  ul {
+    li {
+      button {
+        &.active-font,
+        &:hover {
+          color: var(--body--color--secondary);
+        }
+      }
+    }
+  }
+}
+
+.accordion-item {
+  background-color: var(--body--bg);
+  border-color: var(--body--color);
+}
+
+@import './dark-mode';
