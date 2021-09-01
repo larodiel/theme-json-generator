@@ -106,22 +106,22 @@ export default class ThemeFile extends Component {
                 </AccordionItem>
                 <AccordionItem headerID="HeadingsHeader" panelID="Headings" title="Headings">
                   <div id="theme-headings">
-                    <HeadingStyle heading="h1" initialSize="40" onChange={heading => {
+                    <HeadingStyle heading="h1" initialFamily={this.state.themeJson.styles.elements.h1.typography.fontFamily} initialSize="40" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
-                    <HeadingStyle heading="h2" initialSize="30" onChange={heading => {
+                    <HeadingStyle heading="h2" initialFamily={this.state.themeJson.styles.elements.h2.typography.fontFamily} initialSize="30" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
-                    <HeadingStyle heading="h3" initialSize="28" onChange={heading => {
+                    <HeadingStyle heading="h3" initialFamily={this.state.themeJson.styles.elements.h3.typography.fontFamily} initialSize="28" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
-                    <HeadingStyle heading="h4" initialSize="24" onChange={heading => {
+                    <HeadingStyle heading="h4" initialFamily={this.state.themeJson.styles.elements.h4.typography.fontFamily} initialSize="24" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
-                    <HeadingStyle heading="h5" initialSize="20" onChange={heading => {
+                    <HeadingStyle heading="h5" initialFamily={this.state.themeJson.styles.elements.h5.typography.fontFamily} initialSize="20" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
-                    <HeadingStyle heading="h6" initialSize="15" onChange={heading => {
+                    <HeadingStyle heading="h6" initialFamily={this.state.themeJson.styles.elements.h6.typography.fontFamily} initialSize="15" onChange={heading => {
                       this.headingChangeHandler(heading)
                     }} />
                   </div>
